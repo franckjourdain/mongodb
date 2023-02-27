@@ -1,0 +1,46 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Application produits</h1>
+<div id="prod">
+
+</div>
+
+<script>
+
+
+        function showReviews(id){
+            axios.get('/productR/' + id)
+            .then( (response) => {
+                var data = response.data;
+                console.log(data);
+            });
+        }
+
+        $(function() {
+            axios.get('/allProducts')
+            .then((response) => {
+                var data = response.data;
+                console.log(response.data);
+                for(i = 0; i < data.length ; i++){
+                    $('#prod').append('<div class="produits"><p> nom du produit :' + data[i].name + '</p>');
+                    $('#prod').append('<p> quantité :' + data[i].quantity + '</p>');
+                    var test = '<p class="com" id="' + data[i]._id + '"> Reviews </p> <hr> </div>';
+                            console.log(test)
+                    $('#prod').append(test);
+                }
+        });
+
+        $(document).on('click','.com',function(){
+                console.log(this.id) 
+                showReviews(this.id) 
+            }) 
+
+        });
+    </script>
+</body>
+</html>

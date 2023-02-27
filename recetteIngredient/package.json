@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "json": "^11.0.0",
+    "jsonfile": "^6.1.0",
+    "mongodb": "^5.1.0",
+    "mongoose": "^6.10.0",
+    "node": "^19.6.1",
+    "path": "^0.12.7",
+    "saved": "^0.1.2"
+  },
+  "name": "recetteingredient",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

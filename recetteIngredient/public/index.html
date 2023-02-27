@@ -1,0 +1,46 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Application Recettes</h1>
+<div id="prod">
+
+</div>
+
+<script>
+
+
+        function showRecette(id){
+            axios.get('/recetteI/' + id)
+            .then( (response) => {
+                var data = response.data;
+                console.log(data);
+            });
+        }
+
+        $(function() {
+            axios.get('/allRecette')
+            .then((response) => {
+                var data = response.data;
+                console.log(response.data);
+                for(i = 0; i < data.length ; i++){
+                    $('#prod').append('<div class="recette"><p> nom de la recette :' + data[i].name + '</p>');
+                    $('#prod').append('<p> Pays :' + data[i].pays + '</p>');
+                    var test = '<p class="com" id="' + data[i]._id + '"> Ingrédients </p> <hr> </div>';
+                            console.log(test)
+                    $('#prod').append(test);
+                }
+        });
+
+        $(document).on('click','.com',function(){
+                console.log(this.id) 
+                showRecette(this.id) 
+            }) 
+
+        });
+    </script>
+</body>
+</html>
